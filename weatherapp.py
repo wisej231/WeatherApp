@@ -25,14 +25,16 @@ def get_city_data():
         current_time = data["location"]["localtime"]
 
         #Current Weather Data
-        temperature = data["current"]["temperature"]
-        feels_like = data["current"]["feelslike"]
+        temperature_C = data["current"]["temperature"]
+        temperature_F = (temperature_C*(9/5))+32
+        feels_like_C = data["current"]["feelslike"]
+        feels_like_F = (feels_like_C*(9/5))+32
         description = data["current"]["weather_descriptions"][0]
         wind_speed = data["current"]["wind_speed"]
         precipitation = data["current"]["precip"]
 
         location_string=f"\nCurrent Weather in {location} at {current_time}: is {description}, "
-        temperature_string=f"\nTemperature is: {temperature} \u00B0C, but it feels like {feels_like} \u00B0C"
+        temperature_string=f"\nTemperature is: {temperature_F} \u00B0F, but it feels like {feels_like_F} \u00B0F"
         misc_string=f"\nThe Wind Speed is: {wind_speed} km/h, and the Precipitation level is {precipitation}"
 
         out=location_string+temperature_string+misc_string
